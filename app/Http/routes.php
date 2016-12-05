@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::any('/upyuntest','UpyuntestController@index');
+Route::any('/upyunimgupload','UpyuntestController@store');
