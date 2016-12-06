@@ -1,16 +1,56 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Upload\ImgController;//使用统一上传接口
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
+use App\Http\Controllers\Upload\ImgController;
 
-class UpyuntestController extends Controller
+class UpyunController extends Controller
 {
+
+    /**
+     * upimg 又拍云 单图上传 表单
+     */
+    public function upimg()
+    {
+        return view('upimg');
+    }
+    /**
+     * upimg 又拍云 单图上传 处理
+     */
+    public function upimgAction(Request $request,ImgController $imgController)
+    {
+        //判断请求中是否包含name=file的上传文件
+        if($request->hasFile('myfile')){
+            $month = Carbon::now()->format('Ym');
+            $file = $imgController->uploadImg('myfile','/weixin/qdzufang/'.$month.'/',$request);
+            dd($file);
+        }
+    }
+    /**
+     * upimgs 又拍云 多图上传 表单
+     */
+    public function upimgs()
+    {
+        return view('upimgs');
+    }
+    /**
+     * upimgs 又拍云 多图上传 处理
+     */
+    public function upimgsAction(Request $request,ImgController $imgController)
+    {
+
+        dd($request->myfiles);
+        //判断请求中是否包含name=file的上传文件
+        if($request->hasFile('myfiles')){
+            $month = Carbon::now()->format('Ym');
+            $file = $imgController->uploadImgs('myfiles','/weixin/qdzufang/'.$month.'/',$request);
+            dd($file);
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,12 +59,6 @@ class UpyuntestController extends Controller
     public function index()
     {
         //
-//        echo 123456;
-//
-//        echo ($imgController);
-
-        return view('upyuntest');
-
     }
 
     /**
@@ -43,46 +77,9 @@ class UpyuntestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,ImgController $imgController)
+    public function store(Request $request)
     {
         //
-
-
-        //判断请求中是否包含name=file的上传文件
-        if($request->hasFile('myfile')){
-            $file = $imgController->uploadImg('thumbnail','/testxiaoguan',$request->all());
-            dd($file);
-        }
-
-//        $file = $request->file('file');
-//        //判断文件上传过程中是否出错
-//        if(!$file->isValid()){
-//            exit('文件上传出错！');
-//        }
-//        $destPath = realpath(public_path('images'));
-//        if(!file_exists($destPath))
-//            mkdir($destPath,0755,true);
-//        $filename = $file->getClientOriginalName();
-//        if(!$file->move($destPath,$filename)){
-//            exit('保存文件失败！');
-//        }
-//        exit('文件上传成功！');
-
-        $data = array(
-            /*
-            需要保存的数据
-            */
-        );
-        $file = $imgController->uploadImg('thumbnail','',$request);
-        if($file){
-            $data['thumbnail'] = $file;
-        }
-        /*
-
-        业务逻辑代码，如保存$data到表
-
-        */
-
     }
 
     /**

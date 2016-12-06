@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers\Upload;
+<?php
+
+namespace App\Http\Controllers\Upload;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -61,18 +63,60 @@ class ImgController extends Controller {
 		}
 		return $data['file_path'];
 	}
+    //单图上传
 	public function uploadImg($input_name,$path='',Request $request){
-        dd($request);
-		$file='';
+		$file='注意:图片仅支持jpg,png,gif格式';
 		$path=$path?$path:'/';
-		if( $request->hasFile($input_name) && $request->file($input_name)->isValid() ){
-			$this->ratepic($_FILES[$input_name]['tmp_name']);
-			$filename = Str::random(20).'.jpg';
+        $suffix=$request->file($input_name)->getMimeType();
+        switch ($suffix)
+        {
+            case 'image/png':
+            $suffix = 'png';
+            break;
+            case 'image/jpeg':
+            $suffix = 'jpg';
+            break;
+            case 'image/gif':
+            $suffix = 'gif';
+            break;
+            default:
+            $suffix = 'nopass';
+        }
+		if( $request->hasFile($input_name) && $request->file($input_name)->isValid() && $suffix != 'nopass' ){
+			//$this->ratepic($_FILES[$input_name]['tmp_name']);
+			$filename = Str::random(20).'.'.$suffix;
 			$this->upyun->writeFile($path . $filename, file_get_contents($_FILES[$input_name]['tmp_name']));
 			$file = 'http://'.env('UPYUN_BUCKETNAME').'.b0.upaiyun.com'.$path . $filename;
 		}
 		return $file;
 	}
+    //多图上传
+    public function uploadImgs($input_name,$path='',Request $request){
+        $file='注意:图片仅支持jpg,png,gif格式';
+        $path=$path?$path:'/';
+        $suffix=$request->file($input_name)->getMimeType();
+        switch ($suffix)
+        {
+            case 'image/png':
+                $suffix = 'png';
+                break;
+            case 'image/jpeg':
+                $suffix = 'jpg';
+                break;
+            case 'image/gif':
+                $suffix = 'gif';
+                break;
+            default:
+                $suffix = 'nopass';
+        }
+        if( $request->hasFile($input_name) && $request->file($input_name)->isValid() && $suffix != 'nopass' ){
+            //$this->ratepic($_FILES[$input_name]['tmp_name']);
+            $filename = Str::random(20).'.'.$suffix;
+            $this->upyun->writeFile($path . $filename, file_get_contents($_FILES[$input_name]['tmp_name']));
+            $file = 'http://'.env('UPYUN_BUCKETNAME').'.b0.upaiyun.com'.$path . $filename;
+        }
+        return $file;
+    }
 	public function unlinkfile($file){
 		$file =  str_replace('http://'.env('UPYUN_BUCKETNAME').'.b0.upaiyun.com','',$file);
 		if(file_exists($file)){

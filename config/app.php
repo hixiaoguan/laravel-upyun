@@ -145,6 +145,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * 自己安装的扩展
+         * 获取上传文件类型插件 composer require dflydev/apache-mime-types
+         * */
+//        Dflydev\ApacheMimeTypes\PhpRepository::class,
     ],
 
     /*
