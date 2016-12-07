@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::any('/upimg','UpyunController@upimg');
-Route::any('/upimgs','UpyunController@upimgs');
 Route::any('/upimgAction','UpyunController@upimgAction');
+
+Route::any('/upueditor','UpyunController@upueditor');
+Route::any('/upueditorAction','UpyunController@upueditorAction');
 

@@ -29,7 +29,25 @@ class UpyunController extends Controller
             dd($file);
         }
     }
-
+    /**
+     * upueditor UEditor图片&文件上传 表单
+     */
+    public function upueditor()
+    {
+        return view('upueditor');
+    }
+    /**
+     * upeditor 又拍云 UEditor图片&文件上传 处理
+     */
+    public function upueditorAction(Request $request,ImgController $imgController)
+    {
+        //判断请求中是否包含name=file的上传文件
+        if($request->hasFile('myfile')){
+            $month = Carbon::now()->format('Ym');
+            $file = $imgController->uploadImg('myfile','/weixin/qdzufang/'.$month.'/',$request);
+            dd($file);
+        }
+    }
     /**
      * Display a listing of the resource.
      *

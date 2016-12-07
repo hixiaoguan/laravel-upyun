@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>又拍云-单图&多图上传</title>
+    <title>又拍云-UEditor图片&文件上传</title>
 </head>
 <body>
 <form action="/upimgAction" method="post" enctype="multipart/form-data">
