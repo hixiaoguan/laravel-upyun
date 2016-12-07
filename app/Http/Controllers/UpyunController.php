@@ -11,14 +11,14 @@ class UpyunController extends Controller
 {
 
     /**
-     * upimg 又拍云 单图上传 表单
+     * upimg 又拍云 单图&多图上传 表单
      */
     public function upimg()
     {
         return view('upimg');
     }
     /**
-     * upimg 又拍云 单图上传 处理
+     * upimg 又拍云 单图&多图上传 处理
      */
     public function upimgAction(Request $request,ImgController $imgController)
     {
@@ -26,27 +26,6 @@ class UpyunController extends Controller
         if($request->hasFile('myfile')){
             $month = Carbon::now()->format('Ym');
             $file = $imgController->uploadImg('myfile','/weixin/qdzufang/'.$month.'/',$request);
-            dd($file);
-        }
-    }
-    /**
-     * upimgs 又拍云 多图上传 表单
-     */
-    public function upimgs()
-    {
-        return view('upimgs');
-    }
-    /**
-     * upimgs 又拍云 多图上传 处理
-     */
-    public function upimgsAction(Request $request,ImgController $imgController)
-    {
-
-        dd($request->myfiles);
-        //判断请求中是否包含name=file的上传文件
-        if($request->hasFile('myfiles')){
-            $month = Carbon::now()->format('Ym');
-            $file = $imgController->uploadImgs('myfiles','/weixin/qdzufang/'.$month.'/',$request);
             dd($file);
         }
     }
