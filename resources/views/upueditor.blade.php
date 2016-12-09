@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>又拍云-UEditor</title>
-    <script type='text/javascript' src='/UEditor/editor_config.js'></script>
-    <script type='text/javascript' src='/UEditor/editor_all.js'></script>
+    <script type='text/javascript' src='/UEditor/up.ueditor.config.js'></script>
+    <script type='text/javascript' src='/UEditor/up.ueditor.all.js'></script>
 </head>
 <body>
 <form action="/upueditorAction" method="post" enctype="multipart/form-data">

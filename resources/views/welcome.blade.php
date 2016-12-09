@@ -43,8 +43,8 @@
             <div class="content">
                 <h2 class="title">又拍云</h2>
                 <div class="title">For - Laravel 5.1 LTS</div>
-                <p><a href="/upimg">单图上传</a></p>
-                <p><a href="/upimgs">多图上传</a></p>
+                <p><a href="/upimg">图片(含多图)上传</a></p>
+                <p><a href="/upueditor">又拍云UEditor百度上传</a></p>
                 <p><a href="/imgslist">文件列表</a></p>
                 <p><a href="/imgsdel">文件删除</a></p>
 
