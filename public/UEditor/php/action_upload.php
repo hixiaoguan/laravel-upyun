@@ -18,6 +18,9 @@ switch (htmlspecialchars($_GET['action'])) {
         $upyun_psw='521my1!@#';//密码
         $upyun_path='/weixin/qdzufang/'.date("Ymd").'/';//上传路径
         if($bucket&&$upyun_user&&$upyun_psw){
+//            $lns = count($_FILES['upfile']);
+//            $ff = implode('|',$_FILES['upfile']);
+//            echo "<script>console.log('".$ff."')</script>";
             $oldname=$_FILES[ "upfile" ]["name"];
             $filesize=$_FILES['upfile']['size'] ;
             $filepath = $_FILES[ "upfile" ][ 'tmp_name' ];
