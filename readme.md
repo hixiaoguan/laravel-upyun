@@ -1,4 +1,4 @@
-## Laravel5.1.* LTS-upyun PHP Framework
+## Laravel5.1.* LTS-UPYUN 又拍云 UEditor 百度编辑器
 
 upyun for laravel5 GIT: https://github.com/hixiaoguan/upyun_laravel.git
 
@@ -74,8 +74,12 @@ public function update(Request $request,ImgController $imgController)
 ## 七、UEditor-UPYUN 又拍云 百度编辑器 上传图片及附件 解决方案
 ### 下载百度编辑器 放到/public/UEditor
     [1.4.3.3 PHP 版本] http://ueditor.baidu.com/build/build_down.php?n=ueditor&v=1_4_3_3-utf8-php
+
     修改/public/UEditor/ueditor.config.js文件里的服务器接口，查找：serverUrl: URL + "php/controller.php" 替换为下面的
     serverUrl: URL + "../upueditorAction"
+
+    复制/public/UEditor/php/config.json文件到/public/目录下
+
 ### 在上面的步骤六 UPYUN 上传示例 的基础上改写 百度编辑器的多图上传其实也是单图上传。可以都按单图上传处理。
 #### 路由：
         Route::any('/upueditor','UpyunController@upueditor');
