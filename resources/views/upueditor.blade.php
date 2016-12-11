@@ -7,12 +7,11 @@
     <script type='text/javascript' src='/UEditor/ueditor.all.js'></script>
 </head>
 <body>
-<form action="/upueditorAction" method="post" enctype="multipart/form-data">
+<form>
     {!! csrf_field() !!}
     <h2>又拍云UEditor上传</h2>
-    <input type="text" name="title"/><br/><br/>
-    <input type="file" name="myfile[]" multiple/><br/><br/>
-    <textarea name="后台取值的key" id="myEditor">这里写你的初始化内容</textarea>
+    <textarea name="upfile" id="myEditor">
+    </textarea>
     <script type='text/javascript'>
         var editor = new UE.ui.Editor();
         editor.render('myEditor');
