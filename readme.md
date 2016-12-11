@@ -68,4 +68,45 @@ public function update(Request $request,ImgController $imgController)
     业务逻辑代码，如更新$data到表
 
     */
+
 }
+
+## 七、UEditor-UPYUN 又拍云 百度编辑器 上传图片及附件 解决方案
+### 下载百度编辑器 放到/public/UEditor
+    [1.4.3.3 PHP 版本] http://ueditor.baidu.com/build/build_down.php?n=ueditor&v=1_4_3_3-utf8-php
+    修改/public/UEditor/ueditor.config.js文件里的服务器接口，查找：serverUrl: URL + "php/controller.php" 替换为下面的
+    serverUrl: URL + "../upueditorAction"
+### 在上面的步骤六 UPYUN 上传示例 的基础上改写 百度编辑器的多图上传其实也是单图上传。可以都按单图上传处理。
+#### 路由：
+        Route::any('/upueditor','UpyunController@upueditor');
+        Route::any('/upueditorAction','UpyunController@upueditorAction');
+#### 在ImgController添加方法
+        doupUEditor()
+        upueditorAction()
+#### UEditor模板
+        <!doctype html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>又拍云-UEditor</title>
+            <script type='text/javascript' src='/UEditor/ueditor.config.js'></script>
+            <script type='text/javascript' src='/UEditor/ueditor.all.js'></script>
+        </head>
+        <body>
+        <form>
+            {!! csrf_field() !!}
+            <h2>又拍云UEditor上传</h2>
+            <textarea name="upfile" id="myEditor">
+            </textarea>
+            <script type='text/javascript'>
+                var editor = new UE.ui.Editor();
+                editor.render('myEditor');
+            </script>
+            <input type="submit"/>
+        </form>
+        </body>
+        </html>
+
+ #### UEditor百度编辑器读取UP云图片资源 解决方案
+
+ #### UEditor百度编辑器上传附件文件资源 解决方案
