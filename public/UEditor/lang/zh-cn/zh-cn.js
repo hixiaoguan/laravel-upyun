@@ -257,8 +257,8 @@ UE.I18N['zh-cn'] = {
         'static':{
             'lang_tab_remote':"插入图片", //节点
             'lang_tab_upload':"本地上传",
-            'lang_tab_online':"在线管理",
-            'lang_tab_search':"图片搜索",
+            //'lang_tab_online':"在线管理",
+            //'lang_tab_search':"图片搜索",
             'lang_input_url':"地 址：",
             'lang_input_size':"大 小：",
             'lang_input_width':"宽度",
@@ -313,7 +313,7 @@ UE.I18N['zh-cn'] = {
     'attachment':{
         'static':{
             'lang_tab_upload': '上传附件',
-            'lang_tab_online': '在线附件',
+            //'lang_tab_online': '在线附件',
             'lang_start_upload':"开始上传",
             'lang_drop_remind':"可以将文件拖到这里，单次最多可选100个文件"
         },
@@ -344,7 +344,7 @@ UE.I18N['zh-cn'] = {
         'static':{
             'lang_tab_insertV':"插入视频",
             'lang_tab_searchV':"搜索视频",
-            'lang_tab_uploadV':"上传视频",
+            //'lang_tab_uploadV':"上传视频",
             'lang_video_url':"视频网址",
             'lang_video_size':"视频尺寸",
             'lang_videoW':"宽度",

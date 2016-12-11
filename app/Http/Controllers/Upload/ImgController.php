@@ -34,6 +34,7 @@ class ImgController extends Controller {
                 case 'image/gif':
                     $suffix = 'gif';
                     break;
+                //TODO::UEditor 上传文件类型添加 word ppt excel pdf
                 default:
                     $suffix = 'nopass';
             }

@@ -52,14 +52,13 @@ class UpyunController extends Controller
             case 'uploadimage':
                 //$myfiles = $request->file('upfile');
                 //获取到提交过来的字段
-                if($request->hasFile('upfile')){
-                    //$result=$myfiles->getClientOriginalName();
-                    $month = Carbon::now()->format('Ym');
-                    $file = $imgController->uploadUEditor('upfile','/weixin/qdzufang/'.$month.'/',$request);
-                    return $file;
-                }else{
-                    $result=222;
-                }
+                    if($request->hasFile('upfile')){
+                        //$result=$myfiles->getClientOriginalName();
+                        $month = Carbon::now()->format('Ym');
+                        $file = $imgController->uploadUEditor('upfile','/weixin/qdzufang/'.$month.'/',$request);
+                        //return $file;
+                    }
+                    $result = $file;
                 break;
                 /* 上传涂鸦 */
             case 'uploadscrawl':
@@ -67,10 +66,17 @@ class UpyunController extends Controller
             case 'uploadvideo':
                 /* 上传文件 */
             case 'uploadfile':
-                $result = include("action_upload.php");
+                if($request->hasFile('upfile')){
+                    //$result=$myfiles->getClientOriginalName();
+                    $month = Carbon::now()->format('Ym');
+                    $file = $imgController->uploadUEditor('upfile','/weixin/qdzufang/'.$month.'/',$request);
+                    //return $file;
+                }
+                $result = $file;
                 break;
             /* 列出图片 */
             case 'listimage':
+                //$result = 'listimage';
                 $result = include("action_list.php");
                 break;
             /* 列出文件 */
@@ -112,6 +118,7 @@ class UpyunController extends Controller
     public function index()
     {
         //
+
     }
 
     /**
