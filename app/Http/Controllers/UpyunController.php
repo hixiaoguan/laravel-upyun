@@ -110,6 +110,32 @@ class UpyunController extends Controller
             }
         }
     }
+
+    //又拍云文件列表
+    public function upfilelist(ImgController $imgController){
+        $month = Carbon::now()->format('Ym');
+        $path = '/weixin/qdzufang/'.$month.'/';
+        $filelist = $imgController->getUpFileList($path);
+        $pathstr = 'http://'.env('UPYUN_BUCKETNAME').'.b0.upaiyun.com'.$path;
+        //return $upfilelist;
+        //dd($filelist);
+        return view('upfilelist',compact('filelist','pathstr'));
+    }
+
+    //又拍云文件删除
+    public function upfiledel(ImgController $imgController){
+        $month = Carbon::now()->format('Ym');
+        $path = '/weixin/qdzufang/'.$month.'/';
+        $filelist = $imgController->getUpFileList($path);
+        $pathstr = 'http://'.env('UPYUN_BUCKETNAME').'.b0.upaiyun.com'.$path;
+        return view('upfilelistdel',compact('filelist','pathstr'));
+    }
+    //又拍云文件删除Action
+    public function upfiledelAction(ImgController $imgController){
+        //dd('del',$request->get('delfile'));
+        $delres = $imgController->delFile('/weixin/');
+        dd($delres);
+    }
     public function test()
     {
         return view('test');
@@ -119,6 +145,9 @@ class UpyunController extends Controller
         //dd($request->file('myfile'));
         dd($request->file('myfile')->getClientOriginalExtension());
     }
+
+
+
     /**
      * Display a listing of the resource.
      *

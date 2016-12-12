@@ -45,8 +45,8 @@
                 <div class="title">For - Laravel 5.1 LTS</div>
                 <p><a href="/upimg">图片(含多图)上传</a></p>
                 <p><a href="/upueditor">又拍云UEditor百度上传</a></p>
-                <p><a href="/imgslist">文件列表</a></p>
-                <p><a href="/imgsdel">文件删除</a></p>
+                <p><a href="/upfilelist">文件列表</a></p>
+                <p><a href="/upfiledel">文件删除</a></p>
 
             </div>
         </div>

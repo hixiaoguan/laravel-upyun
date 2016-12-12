@@ -161,4 +161,20 @@ class ImgController extends Controller {
 		return $file;
 	}
 
+    //又拍云 文件列表
+    public function getUpFileList($path){
+        $upy = new UpYun(env('UPYUN_BUCKETNAME'), env('UPYUN_USERNAME'), env('UPYUN_PASSWORD'));
+        $upfilelist = $upy -> getList($path);
+        return $upfilelist;
+    }
+
+    //又拍云 文件删除
+    public function delFile($path){
+        //return $path;
+        $upy = new UpYun(env('UPYUN_BUCKETNAME'), env('UPYUN_USERNAME'), env('UPYUN_PASSWORD'));
+        $delfile = $upy -> delete($path);
+        //dd($delfile);
+        return $delfile;
+    }
+
 }

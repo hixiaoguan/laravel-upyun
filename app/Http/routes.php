@@ -21,6 +21,11 @@ Route::any('/upimgAction','UpyunController@upimgAction');
 Route::any('/upueditor','UpyunController@upueditor');
 Route::any('/upueditorAction','UpyunController@upueditorAction');
 
+Route::get('/upfilelist','UpyunController@upfilelist');
+
+Route::get('/upfiledel','UpyunController@upfiledel');
+Route::get('/upfiledelAction','UpyunController@upfiledelAction');
+
 Route::any('/test','UpyunController@test');
 Route::any('/testAction','UpyunController@testAction');
 
