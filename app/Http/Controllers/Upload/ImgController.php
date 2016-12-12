@@ -22,19 +22,48 @@ class ImgController extends Controller {
         $path=$path?$path:'/';
         //获取文件类型
         function getSuffix($myfiles){
-            $suffix=$myfiles->getMimeType();
+            $suffix=$myfiles->getClientOriginalExtension();
             switch ($suffix)
             {
-                case 'image/png':
+                case 'png':
                     $suffix = 'png';
                     break;
-                case 'image/jpeg':
+                case 'jpg':
                     $suffix = 'jpg';
                     break;
-                case 'image/gif':
-                    $suffix = 'gif';
+                case 'jpeg':
+                    $suffix = 'jpeg';
                     break;
-                //TODO::UEditor 上传文件类型添加 word ppt excel pdf
+                case 'gif':
+                $suffix = 'gif';
+                break;
+                case 'pdf':
+                    $suffix = 'pdf';
+                    break;
+                case 'doc':
+                    $suffix = 'doc';
+                    break;
+                case 'docx':
+                    $suffix = 'docx';
+                    break;
+                case 'xls':
+                    $suffix = 'xls';
+                    break;
+                case 'xlsx':
+                    $suffix = 'xlsx';
+                    break;
+                case 'ppt':
+                    $suffix = 'ppt';
+                    break;
+                case 'pptx':
+                $suffix = 'pptx';
+                break;
+                case 'mp4':
+                    $suffix = 'mp4';
+                    break;
+                case 'zip':
+                    $suffix = 'zip';
+                    break;
                 default:
                     $suffix = 'nopass';
             }
@@ -79,16 +108,19 @@ class ImgController extends Controller {
         $path=$path?$path:'/';
         //获取文件类型
         function getSuffix($myfiles){
-            $suffix=$myfiles->getMimeType();
+            $suffix=$myfiles->getClientOriginalExtension();
             switch ($suffix)
             {
-                case 'image/png':
+                case 'png':
                     $suffix = 'png';
                     break;
-                case 'image/jpeg':
+                case 'jpg':
                     $suffix = 'jpg';
                     break;
-                case 'image/gif':
+                case 'jpeg':
+                    $suffix = 'jpeg';
+                    break;
+                case 'gif':
                     $suffix = 'gif';
                     break;
                 default:

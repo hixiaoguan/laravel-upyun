@@ -110,6 +110,15 @@ class UpyunController extends Controller
             }
         }
     }
+    public function test()
+    {
+        return view('test');
+    }
+    public function testAction(Request $request)
+    {
+        //dd($request->file('myfile'));
+        dd($request->file('myfile')->getClientOriginalExtension());
+    }
     /**
      * Display a listing of the resource.
      *
@@ -117,7 +126,6 @@ class UpyunController extends Controller
      */
     public function index()
     {
-        //
 
     }
 

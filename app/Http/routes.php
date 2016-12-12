@@ -21,3 +21,6 @@ Route::any('/upimgAction','UpyunController@upimgAction');
 Route::any('/upueditor','UpyunController@upueditor');
 Route::any('/upueditorAction','UpyunController@upueditorAction');
 
+Route::any('/test','UpyunController@test');
+Route::any('/testAction','UpyunController@testAction');
+
