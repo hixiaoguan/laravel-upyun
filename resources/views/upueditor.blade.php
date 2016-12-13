@@ -16,6 +16,7 @@
         var editor = new UE.ui.Editor();
         editor.render('myEditor');
         editor.ready(function() {
+            //这个地方很关键，CSRF不加的话会出现 500 报错
             editor.execCommand('serverparam', '_token', '{{ csrf_token() }}');
         });
     </script>
