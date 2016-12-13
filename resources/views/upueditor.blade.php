@@ -15,6 +15,9 @@
     <script type='text/javascript'>
         var editor = new UE.ui.Editor();
         editor.render('myEditor');
+        editor.ready(function() {
+            editor.execCommand('serverparam', '_token', '{{ csrf_token() }}');
+        });
     </script>
     <input type="submit"/>
 </form>
