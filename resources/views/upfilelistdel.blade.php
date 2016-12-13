@@ -12,8 +12,8 @@
         @if (strpos($list['name'],'.jpg') == false && strpos($list['name'],'.jpeg') == false && strpos($list['name'],'.png') == false && strpos($list['name'],'.gif') == false)
         @else
         <li>
-            <a href="{!! $pathstr !!}{!!$list['name']!!}" target="_blank"><img src="{!! $pathstr !!}{!!$list['name']!!}" width="150" /></a>
-            <a href="/upfiledelAction?delfile={!! $pathstr !!}{!!$list['name']!!}">X</a>
+            <a href="{!! $pathstr !!}{!! $path !!}{!!$list['name']!!}" target="_blank"><img src="{!! $pathstr !!}{!! $path !!}{!!$list['name']!!}" width="150" /></a>
+            <a href="/upfiledelAction?delfile={!! $path !!}{!!$list['name']!!}">X</a>
         </li>
         @endif
     @endforeach

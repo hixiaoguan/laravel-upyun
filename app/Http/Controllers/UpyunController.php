@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Upload\ImgController;
+use Illuminate\Support\Facades\Redirect;
+use UpYun;
 
 class UpyunController extends Controller
 {
@@ -116,10 +118,8 @@ class UpyunController extends Controller
         $month = Carbon::now()->format('Ym');
         $path = '/weixin/qdzufang/'.$month.'/';
         $filelist = $imgController->getUpFileList($path);
-        $pathstr = 'http://'.env('UPYUN_BUCKETNAME').'.b0.upaiyun.com'.$path;
-        //return $upfilelist;
-        //dd($filelist);
-        return view('upfilelist',compact('filelist','pathstr'));
+        $pathstr = 'http://'.env('UPYUN_BUCKETNAME').'.b0.upaiyun.com';
+        return view('upfilelist',compact('filelist','path','pathstr'));
     }
 
     //又拍云文件删除
@@ -127,14 +127,15 @@ class UpyunController extends Controller
         $month = Carbon::now()->format('Ym');
         $path = '/weixin/qdzufang/'.$month.'/';
         $filelist = $imgController->getUpFileList($path);
-        $pathstr = 'http://'.env('UPYUN_BUCKETNAME').'.b0.upaiyun.com'.$path;
-        return view('upfilelistdel',compact('filelist','pathstr'));
+        $pathstr = 'http://'.env('UPYUN_BUCKETNAME').'.b0.upaiyun.com';
+        return view('upfilelistdel',compact('filelist','path','pathstr'));
     }
     //又拍云文件删除Action
-    public function upfiledelAction(ImgController $imgController){
-        //dd('del',$request->get('delfile'));
-        $delres = $imgController->delFile('/weixin/');
-        dd($delres);
+    public function upfiledelAction(Request $request,ImgController $imgController){
+        $delres = $imgController->delFile($request->get('delfile'));
+        if($delres){
+            return Redirect::to("upfiledel");
+        }
     }
     public function test()
     {
@@ -155,7 +156,10 @@ class UpyunController extends Controller
      */
     public function index()
     {
-
+        $upy = new UpYun(env('UPYUN_BUCKETNAME'), env('UPYUN_USERNAME'), env('UPYUN_PASSWORD'));
+        $delfile = $upy -> delete('/weixin/qdzufang/201612/JrUGFRcAqbnOpmLU9OYI.jpg');
+        dd($delfile);
+        return $delfile;
     }
 
     /**

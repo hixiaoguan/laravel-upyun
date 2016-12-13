@@ -29,3 +29,5 @@ Route::get('/upfiledelAction','UpyunController@upfiledelAction');
 Route::any('/test','UpyunController@test');
 Route::any('/testAction','UpyunController@testAction');
 
+Route::get('/upi','UpyunController@index');
+
